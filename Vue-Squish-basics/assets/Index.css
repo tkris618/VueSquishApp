@@ -1,0 +1,46 @@
+.btn-bd-primary{
+    background-color: white;
+    border: 1px solid black;
+    
+}
+.btn-bd-primary:hover{
+    background-color: pink;
+    border: 1px solid rgb(255, 118, 141);
+}
+.fw-lighter:hover{
+    color: rgba(0, 183, 255, 0.795);
+}
+img{
+    border-radius: 25px;
+}
+.navbar {
+    background-color: white;
+    border-bottom: 5px solid #42033D;
+}
+#contentAll{
+    background-color: white;
+}
+#newSquish{
+    background-color: white;
+}
+.header-img{
+    margin-top: 25px;
+    border-radius: none;
+}
+.headerImgContainer {
+    background-color: #3698db;
+}
+footer{
+    background-color: #3698db;
+    text-align: center;
+}
+.footerHeader{
+    padding: 15px;
+    color: white;
+}
+.header-img{
+    border-radius: 0;
+}
+.squishCard {
+    border-bottom: 2px solid black;
+}
