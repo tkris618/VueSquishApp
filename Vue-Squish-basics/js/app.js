@@ -4,15 +4,15 @@ const app = Vue.createApp({
             newItem: {
                 name: '',
                 category: '',
-                status: 'want',
+                status: false,
                 favorite: false,
             
             },
             squishList: [
-                {name: 'Clayton', category: 'animal', status: 'want', favorite: false},//want it
-                {name: 'Ronnie', category: 'animal', status: 'got', favorite: false}, //have it
-                {name: 'Reshma', category: 'animal', status: 'got', favorite: true}, //favorite
-                {name: 'Poo', category: 'animal', status: 'got', favorite: true}, //favorite
+                {name: 'Clayton', category: 'animal', status: false, favorite: false},//want it
+                {name: 'Ronnie', category: 'animal', status: false, favorite: false}, //have it
+                {name: 'Reshma', category: 'animal', status: true, favorite: true}, //favorite
+                {name: 'Poo', category: 'animal', status: true, favorite: true}, //favorite
 
             ],
         }
@@ -27,7 +27,7 @@ const app = Vue.createApp({
             this.newItem = {
                 name: '',
                 category: '',
-                status: 'want',
+                status: false,
                 favorite: false,
             };
         }
@@ -36,12 +36,12 @@ const app = Vue.createApp({
     computed: {
         gotList: function () {
             return this.squishList.filter(function (item) {
-                return item.status === 'got';
+                return item.status === true;
             })
         },
         wantList: function () {
             return this.squishList.filter(function (item) {
-                return item.status === 'want';
+                return item.status === false;
             })
         },
         favoriteList: function () {

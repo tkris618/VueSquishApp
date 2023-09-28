@@ -51,12 +51,15 @@
                             <div class="form-check">
                                 <label class="form-check-label">Name: {{item.name}}</label><br>
                                     <label class="form-check-label">Category: {{item.category}}</label><br>
-                                    <label :class="'form-check-label' + (item.got ? 'got' : '')">Status: {{item.status}}</label><br>
                                     <div class="form-check">
-                                        
+                                        <label :for="'Want it-' + i"
+                                        :class="{'form-check-label' : true, 'got' : item.status}"><input v-model="item.status"
+                                         type="checkbox" v-bind:id="'got-' + i" class="form-check-input">Status: {{item.status}}</label><br>
+                                    </div>
+                                    <div class="form-check">
                                         <label :for="'favorite-' + i"
-                                               :class="{'form-check-label' : true, 'favorite' : item.favorite}"><input v-model="item.favorite" type="checkbox" v-bind:id="'favorite-' + i"
-                                               class="form-check-input">Favorite</label><br>
+                                               :class="{'form-check-label' : true, 'favorite' : item.favorite}"><input v-model="item.favorite"
+                                                type="checkbox" v-bind:id="'favorite-' + i" class="form-check-input">Favorite</label><br>
                             </div>
                         </li>
                     </ul>
@@ -70,7 +73,9 @@
                             <div class="form-check">
                                 <label class="form-check-label">Name: {{item.name}}</label><br>
                                     <label class="form-check-label">Category: {{item.category}}</label><br>
-                                    <label :class="'form-check-label' + (item.got ? 'got' : '')">Status: {{item.status}}</label><br>
+                                    <div class="form-check">
+                                        <label :class="{'form-check-label' : true, 'got' : item.status }"><input v-model="item.status" type="checkbox" v-bind:id="'want-' + i" class="form-check-input">Status: {{item.status}}</label><br>
+                                        </div>
                                     <div class="form-check">
                                         <label :for="'favorite-' + i"
                                         :class="{'form-check-label' : true, 'favorite' : item.favorite}"><input v-model="item.favorite" type="checkbox" v-bind:id="'favorite-' + i"
@@ -88,7 +93,9 @@
                             <div class="form-check">
                                 <label class="form-check-label">Name: {{item.name}}</label><br>
                                     <label class="form-check-label">Category: {{item.category}}</label><br>
-                                    <label :class="'form-check-label' + (item.got ? 'got' : '')">Status: {{item.status}}</label><br>
+                                    <div class="form-check">
+                                        <label :for="'{{item.status}}-' + 1" :class="{'form-check-label' : true, 'got' : item.status }"><input v-model="item.status" type="checkbox" v-bind:id="'got-' + i" class="form-check-input"> Status: {{item.status}}</label><br>
+                                        </div>
                                     <div class="form-check">
                                         <label :for="'favorite-' + i"
                                                :class="{'form-check-label' : true, 'favorite' : item.favorite}"><input v-model="item.favorite" type="checkbox" v-bind:id="'favorite-' + i"
