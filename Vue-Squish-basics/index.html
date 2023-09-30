@@ -23,7 +23,7 @@
                 <h1><i class="fa-solid fa-compass fa-md" id="newSquish"></i>SQUISH TRACKR</h1>
             </a>
             <!--Button trigger for modal-->
-            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" data-bs-target="#addItemModal" title="Add Item">
+            <button type="button" class="btn btn-bd-primary" id="addBtn" data-bs-toggle="modal" data-bs-target="#addItemModal" title="Add Item">
                 <i class="fa-solid fa-plus"></i> Add Squish
             </button>
 
@@ -51,15 +51,15 @@
                             <div class="form-check">
                                 <label class="form-check-label">Name: {{item.name}}</label><br>
                                     <label class="form-check-label">Category: {{item.category}}</label><br>
-                                    <div class="form-check">
+                                    <div class="form-check form-switch">
                                         <label :for="'Want it-' + i"
                                         :class="{'form-check-label' : true, 'got' : item.status}"><input v-model="item.status"
-                                         type="checkbox" v-bind:id="'got-' + i" class="form-check-input">Status: {{item.status}}</label><br>
+                                         type="checkbox" role="switch" v-bind:id="'got-' + i" class="form-check-input">Got it</label><br>
                                     </div>
-                                    <div class="form-check">
+                                    <div class="form-check form-switch">
                                         <label :for="'favorite-' + i"
                                                :class="{'form-check-label' : true, 'favorite' : item.favorite}"><input v-model="item.favorite"
-                                                type="checkbox" v-bind:id="'favorite-' + i" class="form-check-input">Favorite</label><br>
+                                                type="checkbox" role="switch" v-bind:id="'favorite-' + i" class="form-check-input switches">Favorite</label><br>
                             </div>
                         </li>
                     </ul>
@@ -73,12 +73,12 @@
                             <div class="form-check">
                                 <label class="form-check-label">Name: {{item.name}}</label><br>
                                     <label class="form-check-label">Category: {{item.category}}</label><br>
-                                    <div class="form-check">
-                                        <label :class="{'form-check-label' : true, 'got' : item.status }"><input v-model="item.status" type="checkbox" v-bind:id="'want-' + i" class="form-check-input">Status: {{item.status}}</label><br>
+                                    <div class="form-check form-switch">
+                                        <label :class="{'form-check-label' : true, 'got' : item.status }"><input v-model="item.status" type="checkbox" role="switch" v-bind:id="'want-' + i" class="form-check-input" id="flexSwitchCheckDefault">Got it!</label><br>
                                         </div>
-                                    <div class="form-check">
+                                    <div class="form-check form-switch">
                                         <label :for="'favorite-' + i"
-                                        :class="{'form-check-label' : true, 'favorite' : item.favorite}"><input v-model="item.favorite" type="checkbox" v-bind:id="'favorite-' + i"
+                                        :class="{'form-check-label' : true, 'favorite' : item.favorite}"><input v-model="item.favorite" type="checkbox" role="switch" v-bind:id="'favorite-' + i"
                                         class="form-check-input">Favorite</label><br>
                             </div>
                         </li>
@@ -93,12 +93,12 @@
                             <div class="form-check">
                                 <label class="form-check-label">Name: {{item.name}}</label><br>
                                     <label class="form-check-label">Category: {{item.category}}</label><br>
-                                    <div class="form-check">
-                                        <label :for="'{{item.status}}-' + 1" :class="{'form-check-label' : true, 'got' : item.status }"><input v-model="item.status" type="checkbox" v-bind:id="'got-' + i" class="form-check-input"> Status: {{item.status}}</label><br>
+                                    <div class="form-check form-switch">
+                                        <label :for="'{{item.status}}-' + 1" :class="{'form-check-label' : true, 'got' : item.status }"><input v-model="item.status" type="checkbox" role="switch" v-bind:id="'got-' + i" class="form-check-input"> Got it</label><br>
                                         </div>
-                                    <div class="form-check">
+                                    <div class="form-check form-switch">
                                         <label :for="'favorite-' + i"
-                                               :class="{'form-check-label' : true, 'favorite' : item.favorite}"><input v-model="item.favorite" type="checkbox" v-bind:id="'favorite-' + i"
+                                               :class="{'form-check-label' : true, 'favorite' : item.favorite}"><input v-model="item.favorite" type="checkbox" role="switch" v-bind:id="'favorite-' + i"
                                                class="form-check-input">Favorite</label><br>
                             </div>
                         </li>
@@ -134,13 +134,6 @@
                             <option value="3">Insect</option>
                             <option value="4">Bird</option>
                             <option value="5">Monster</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label class="col-sm-2">Status: </label>
-                        <select v-model="newItem.status" class="form-select" aria-label="Default select example">
-                            <option value="one">Got</option>
-                            <option value="two">Want</option>
                         </select>
                     </div>
                 </div>
