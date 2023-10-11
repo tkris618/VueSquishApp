@@ -15,21 +15,21 @@
     <link rel="stylesheet" href="assets/Index.css">
 </head>
 <body>
+<!--Navbar-->
+<nav class="navbar navbar-expand-lg navbar-light">
+    <div class="container-fluid">
+        <a class="navbar-brand" href="#">
+            <h1><i class="fa-regular fa-compass fa-md" id="newSquish"></i> SQUISH TRACKR</h1>
+        </a>
+        <!--Button trigger for modal-->
+        <button type="button" class="btn btn-bd-primary" id="addBtn" data-bs-toggle="modal" data-bs-target="#addItemModal" title="Add Item">
+            <i class="fas fa-plus"> </i> Add Squish
+        </button>
+
+    </div>
+
+</nav>
 <div class="container-fluid">
-    <!--Navbar-->
-    <nav class="navbar navbar-expand-lg navbar-light">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <h1><i class="fa-solid fa-compass fa-md" id="newSquish"></i>SQUISH TRACKR</h1>
-            </a>
-            <!--Button trigger for modal-->
-            <button type="button" class="btn btn-bd-primary" id="addBtn" data-bs-toggle="modal" data-bs-target="#addItemModal" title="Add Item">
-                <i class="fa-solid fa-plus"></i> Add Squish
-            </button>
-
-        </div>
-
-    </nav>
 
     <!--Header image-->
     <div class="container-fluid" id="app">
@@ -43,34 +43,38 @@
 
         <!--Content-->
         <div class="row squish-lists text-center mt-3" >
-            <div class="col-md-4 p-0" >
+            <div class="col-md-4 p-0" id="itemColumns" >
                 <div class="want-it-list">
-                    <h2>Want It</h2>
+                    <h2>Want It   <i class="fa-solid fa-exclamation"></i></h2>
                     <ul class="list-group list-group-flush border-bottom">
                         <li v-for="(item, i) in wantList" :key="item.name" class="list-group-item">
-                            <div class="form-check">
+                            <div>
                                 <label class="form-check-label">Name: {{item.name}}</label><br>
                                     <label class="form-check-label">Category: {{item.category}}</label><br>
                                     <div class="form-check form-switch">
                                         <label :for="'Want it-' + i"
                                         :class="{'form-check-label' : true, 'got' : item.status}"><input v-model="item.status"
-                                         type="checkbox" role="switch" v-bind:id="'got-' + i" class="form-check-input">Got it</label><br>
+                                         type="checkbox" role="switch" :id="'got-' + i" class="form-check-input">Got it</label><br>
                                     </div>
                                     <div class="form-check form-switch">
                                         <label :for="'favorite-' + i"
                                                :class="{'form-check-label' : true, 'favorite' : item.favorite}"><input v-model="item.favorite"
                                                 type="checkbox" role="switch" v-bind:id="'favorite-' + i" class="form-check-input switches">Favorite</label><br>
+                                    </div>
+                                <div>
+                                    <button @delete-item="deleteIt" class="btn btn-bd-primary" type="button"><i class="fa-solid fa-trash"></i> Delete squish</button>
+                                </div>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="col-md-4 p-0">
+            <div class="col-md-4 p-0" id="itemColumns">
                 <div class="got-it-list">
-                    <h2>Got It</h2>
+                    <h2>Got It <i class="fa-solid fa-check fa-lg"></i> </h2>
                     <ul class="list-group list-group-flush border-bottom">
                         <li v-for="(item, i) in gotList" :key="item.name" class="list-group-item">
-                            <div class="form-check">
+                            <div>
                                 <label class="form-check-label">Name: {{item.name}}</label><br>
                                     <label class="form-check-label">Category: {{item.category}}</label><br>
                                     <div class="form-check form-switch">
@@ -80,17 +84,21 @@
                                         <label :for="'favorite-' + i"
                                         :class="{'form-check-label' : true, 'favorite' : item.favorite}"><input v-model="item.favorite" type="checkbox" role="switch" v-bind:id="'favorite-' + i"
                                         class="form-check-input">Favorite</label><br>
+                                    </div>
+                                <div>
+                                    <button @delete-item="deleteIt" class="btn btn-bd-primary" type="button"><i class="fa-solid fa-trash"></i> Delete squish</button>
+                                </div>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="col-md-4 p-0">
+            <div class="col-md-4 p-0" id="itemColumns">
                 <div class="favorite-list">
-                    <h2>Favorite</h2>
+                    <h2>Favorite <i class="fa-solid fa-heart"></i></h2>
                     <ul class="list-group list-group-flush border-bottom">
                         <li v-for="(item, i) in favoriteList" :key="item.name" class="list-group-item">
-                            <div class="form-check">
+                            <div>
                                 <label class="form-check-label">Name: {{item.name}}</label><br>
                                     <label class="form-check-label">Category: {{item.category}}</label><br>
                                     <div class="form-check form-switch">
@@ -100,51 +108,59 @@
                                         <label :for="'favorite-' + i"
                                                :class="{'form-check-label' : true, 'favorite' : item.favorite}"><input v-model="item.favorite" type="checkbox" role="switch" v-bind:id="'favorite-' + i"
                                                class="form-check-input">Favorite</label><br>
+                                    </div>
+                                <div>
+                                    <button  class="btn btn-bd-primary" type="button"><i class="fa-solid fa-trash"></i> Delete squish</button>
+                                </div>
                             </div>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
-        
+        <div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <form v-on:submit.prevent="addIt">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalTitle">Add Item</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="mb-3">
+                                <label for="name" class="form-label">Name</label>
+                                <input v-model="newItem.name" id="name" type="text" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="col-sm-2">Category: </label>
+                                <select v-model="newItem.category" class="form-select" aria-label="Default sleect example">
+                                    <option value="Animal">Animal</option>
+                                    <option value="Aquatic Animal">Aquatic Animal</option>
+                                    <option value="Insect">Insect</option>
+                                    <option value="Bird">Bird</option>
+                                    <option value="Monster">Monster</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nevermind</button>
+                            <button type="submit" class="btn btn-primary" data-bs-dismiss="modal" data>Add It</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
+
+</div>
 <!--Footer Content-->
 <footer>
     <h3 class="footerHeader">&copySquishTracker</h3>
-</footer>
-</div>
-<div class="modal fade" id="addItemModal" tabindex="-1" role="dialog" aria-labelledby="modalTitle" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <form v-on:submit.prevent="addIt">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="modalTitle">Add Item</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="name" class="form-label">Name</label>
-                        <input v-model="newItem.name" id="name" type="text" class="form-control">
-                    </div>
-                    <div class="mb-3">
-                        <label class="col-sm-2">Category: </label>
-                        <select v-model="newItem.category" class="form-select" aria-label="Default sleect example">
-                            <option value="1">Animal</option>
-                            <option value="2">Aquatic Animal</option>
-                            <option value="3">Insect</option>
-                            <option value="4">Bird</option>
-                            <option value="5">Monster</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nevermind</button>
-                    <button type="submit" class="btn btn-primary" >Add It</button>
-                </div>
-            </div>
-        </form>
+    <div class="container-fluid">
+        <img class="container-fluid" src="images/Squishmallows_Footer_Desktop_1944x.webp">
     </div>
-</div>
+</footer>
+
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8"

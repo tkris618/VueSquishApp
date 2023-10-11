@@ -20,8 +20,8 @@ const app = Vue.createApp({
     },
     methods: {
         //add item to list
-        addIt: function(){
-            this.squishList.push(this.newItem);
+        addIt: function(newItemFromModal){
+            this.squishList.push(newItemFromModal);
 
             //form clear
             this.newItem = {
@@ -33,7 +33,7 @@ const app = Vue.createApp({
             };
         },
         deleteIt(item){
-            this.squishList.splice(this.squishList);
+            this.squishList.splice(item, 1);
         },
 
     },
@@ -54,19 +54,20 @@ const app = Vue.createApp({
             })
         }
     },
-    mounted: function(){
+    mounted: function () {
         if(localStorage.getItem('squishList')){
-            // if list exists in storage, replace current list
-            this.shoppingList = JSON.parse(localStorage.getItem('squishList'));
+
+            this.squishList = JSON.parse(localStorage.getItem('squishList'));
         }
     },
+
     watch: {
         squishList: {
-            // call this function when an item changes
+
             handler: function(newList){
                 localStorage.setItem('squishList', JSON.stringify(this.squishList));
             },
-            deep: true, // tells vue to watch nested properties
+            deep: true,
         }
     }
 })
