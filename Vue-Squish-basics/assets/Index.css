@@ -55,8 +55,8 @@ footer{
 .header-img{
     border-radius: 0;
 }
-.squishCard {
-    border-bottom: 2px solid black;
+li {
+    border: 2px solid #fa85b9;
 }
 input[type= checkbox]{
     background-color: #b0a6ff !important;
@@ -64,14 +64,7 @@ input[type= checkbox]{
 #itemColumns{
     margin-top: 20px;
 }
-.fa-heart {
-    color: pink;
-}
-.fa-check {
-    color:  #ffe980;
-    font-weight: 900;
-}
-.fa-exclamation
+.list-group-flush
 {
-    color: #e27d6d;
+    border: 5px solid #fa85b9 !important;
 }

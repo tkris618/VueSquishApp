@@ -51,8 +51,8 @@ app.component('AddItemModal', {
         </div>
       
       <template #footer>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Nevermind</button>
-        <button @click.prevent="addIt" type="submit" class="btn btn-primary" data-bs-dismiss="modal">Add It</button>
+        <button type="button" class="btn btn-bd-secondary" data-bs-dismiss="modal">Nevermind</button>
+        <button @click.prevent="addIt" type="submit" class="btn btn-bd-primary" data-bs-dismiss="modal">Add It</button>
       </template>
       </app-modal>
     `
