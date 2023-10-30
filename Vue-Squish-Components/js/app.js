@@ -1,19 +1,11 @@
 const app = Vue.createApp({
     data: function() {
         return {
-            newItem: {
-                name: '',
-                id: Math.floor(Math.random() * 10e16),
-                category: '',
-                status: false,
-                favorite: false,
-            
-            },
             squishList: [
-                {id: 1, name: 'Clayton', category: 'animal', status: false, favorite: false},//want it
-                {id: 2, name: 'Ronnie', category: 'animal', status: false, favorite: false}, //have it
-                {id: 3, name: 'Reshma', category: 'animal', status: true, favorite: true}, //favorite
-                {id: 4, name: 'Poo', category: 'animal', status: true, favorite: true}, //favorite
+                new SquishListItem('Clayton', 'animal',false, false),//want it
+                new SquishListItem('Ronnie', 'animal', false, false), //have it
+                new SquishListItem('Reshma','animal', true, true), //favorite
+                new SquishListItem('Poo', 'animal', true, true), //favorite
 
             ],
         }
@@ -22,18 +14,9 @@ const app = Vue.createApp({
         //add item to list
         addIt: function(newItemFromModal){
             this.squishList.push(newItemFromModal);
-
-            //form clear
-            this.newItem = {
-                name: '',
-                id: Math.floor(Math.random() * 10e16),
-                category: '',
-                status: false,
-                favorite: false,
-            };
         },
         deleteIt(item){
-            this.squishList.splice(item, 1);
+            this.squishList.splice(item);
         },
 
     },
@@ -57,7 +40,7 @@ const app = Vue.createApp({
     mounted: function () {
         if(localStorage.getItem('squishList')){
 
-            this.squishList = JSON.parse(localStorage.getItem('squishList'));
+            //this.squishList = JSON.parse(localStorage.getItem('squishList'));
         }
     },
 
@@ -65,7 +48,7 @@ const app = Vue.createApp({
         squishList: {
 
             handler: function(newList){
-                localStorage.setItem('squishList', JSON.stringify(this.squishList));
+                //localStorage.setItem('squishList', JSON.stringify(this.squishList));
             },
             deep: true,
         }

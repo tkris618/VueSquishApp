@@ -43,8 +43,7 @@ app.component('EditItemModal', {
             
             <template #footer>
               <button type="button" class="btn btn-bd-secondary" data-bs-dismiss="modal">Nevermind</button>
-              <button @click.prevent="editIt" type="submit"
-                      class="btn btn-bd-primary" data-bs-dismiss="modal">Save It</button>
+              <button @click.prevent="editIt" type="submit" class="btn btn-bd-primary" data-bs-dismiss="modal">Save It</button>
             </template>
             
           </app-modal>

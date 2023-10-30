@@ -1,13 +1,14 @@
 app.component('AddItemModal', {
     data() {
         return {
-            newItem: {
-                name: '',
-                id: Math.floor(Math.random() * 10e16),
-                category: '',
-                status: false,
-                favorite: false,
-            },
+            // newItem: {
+            //     name: '',
+            //     id: Math.floor(Math.random() * 10e16),
+            //     category: '',
+            //     status: false,
+            //     favorite: false,
+            // },
+            newItem: new SquishListItem()
         }
     },
     props: {
@@ -19,18 +20,19 @@ app.component('AddItemModal', {
     emits: ['add-item'],
     methods: {
         //add item to list
-        addIt: function(){
-
+        addIt: function () {
+            // add item to the list
+            //this.squishList.push(this.newItem);
             this.$emit('add-item', this.newItem);
 
-            //form clear
-            this.newItem = {
-                name: '',
-                id: Math.floor(Math.random() * 10e16),
-                category: '',
-                status: false,
-                favorite: false,
-            };
+            // newItem: {
+            //     name: '',
+            //     id: Math.floor(Math.random() * 10e16),
+            //     category: '',
+            //     status: false,
+            //     favorite: false,
+            // },
+            this.newItem = new SquishListItem();
         },
     },
     template : `
