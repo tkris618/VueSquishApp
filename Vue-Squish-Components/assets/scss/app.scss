@@ -1,0 +1,57 @@
+
+
+
+@import "bootstrap";
+
+nav{
+  background-color: #f8f8fc;
+  border-bottom: 5px solid #8083ff;
+  h1{
+    color: #8083ff;
+  }
+}
+#addBtn{
+  background-color: #ffe980;
+  border: 1px solid #ffdf31;
+  color: black;
+}
+#addBtn:hover{
+  color: #e38c90;
+  background-color: #ffd380;
+  border: 1px solid #f6de8c;
+}
+h2{
+  color: #99deff;
+  font-weight: 700;
+}
+ul{
+  color: #8083ff;
+  .border{
+    color: red;
+  }
+}
+
+label{
+  color: #242424;
+}
+input{
+  color: black;
+}
+input[type= checkbox]{
+  background-color: #b0a6ff !important;
+}
+#trashCan{
+  color: #e38c90;
+}
+#pencilIcon{
+  color: #c3e949;
+}
+footer{
+  border-top: 5px solid #8083ff;
+  background-color: #f8f8fc;
+  text-align: center;
+  h3{
+    padding-top: 40px;
+    color: #8083ff;
+  }
+}

@@ -16,7 +16,7 @@ const app = Vue.createApp({
             this.squishList.push(newItemFromModal);
         },
         deleteIt(item){
-            this.squishList.splice(item);
+            this.squishList.splice(this.squishList.indexOf(item, 1));
         },
 
     },

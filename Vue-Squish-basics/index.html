@@ -59,7 +59,7 @@
                                     <div class="form-check form-switch">
                                         <label :for="'favorite-' + i"
                                                :class="{'form-check-label' : true, 'favorite' : item.favorite}"><input v-model="item.favorite"
-                                                type="checkbox" role="switch" v-bind:id="'favorite-' + i" class="form-check-input switches">Favorite</label><br>
+                                                type="checkbox" role="switch" :id="'favorite-' + i" class="form-check-input switches">Favorite</label><br>
                                     </div>
                                 <div>
                                     <button @delete-item="deleteIt" class="btn btn-bd-primary" type="button"><i class="fa-solid fa-trash"></i> Delete squish</button>

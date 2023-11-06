@@ -22,7 +22,7 @@ app.component('EditItemModal', {
     template: `
       <span class="edit-item-modal">
           <button class="btn btn-tiny" :data-bs-target="'#editModal' + uid" data-bs-toggle="modal">
-            <i class="fas fa-pencil-alt"></i>
+            <i class="fas fa-pencil-alt" id="pencilIcon"></i>
           </button>
           <app-modal :id="'editModal' + uid" title="Edit Item">
             <div class="mb-3">
